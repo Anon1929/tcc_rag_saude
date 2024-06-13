@@ -1,0 +1,13 @@
+Chroma==0.2.0
+chroma-hnswlib==0.7.2
+chromadb==0.4.5
+gpt4all==1.0.8
+keras==2.13.1
+langchain==0.0.261
+langsmith==0.0.21
+libclang==16.0.6
+lxml==4.9.3
+numpy==1.24.3
+pdfminer==20191125
+pdfminer.six==20221105
+tokenizers==0.13.3

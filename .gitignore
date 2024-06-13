@@ -1,0 +1,6 @@
+bin/
+__pycache__/
+include/
+lib/
+lib64/
+share/
