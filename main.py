@@ -19,9 +19,9 @@ else:
 
 
 chat = RAG.RAG(vectorStore, "llama3:latest")
-
+print("Digite sua pergunta\n")
 while True:
-    query = input("\nEu: ")
+    query = input("\n>: ")
     if query == "exit":
         break
     if query.strip() == "":
