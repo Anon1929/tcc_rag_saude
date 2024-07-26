@@ -8,16 +8,17 @@ from langchain_community.embeddings import FastEmbedEmbeddings
 
 import sys
 import os
+from dotenv import load_dotenv, dotenv_values 
 
 import generateVectorStore
 import RAG
-
+import GD
 
 import logging
 
-from telegram import ForceReply, Update
-from telegram.ext import Application, CommandHandler, ContextTypes, MessageHandler, filters
-
+from telegram import ForceReply, Update,InlineKeyboardButton, InlineKeyboardMarkup, Update
+from telegram.ext import Application, CommandHandler, ContextTypes, MessageHandler, filters,CallbackQueryHandler
+load_dotenv() 
 
 
 # Abre VectorStore
@@ -25,13 +26,10 @@ vectorStore = Chroma(embedding_function=FastEmbedEmbeddings() ,persist_directory
 chat = RAG.RAG(vectorStore, "llama3:latest")
 
 
-# Enable logging
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
 )
-# set higher logging level for httpx to avoid all GET and POST requests being logged
 logging.getLogger("httpx").setLevel(logging.WARNING)
-
 logger = logging.getLogger(__name__)
 
 
@@ -45,20 +43,28 @@ async def respostaChat(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
     await update.message.reply_text(textoResult)
 
 
-# Define a few command handlers. These usually take the two arguments update and
-# context.
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    """Send a message when the command /start is issued."""
-    user = update.effective_user
-    await update.message.reply_html(
-        rf"Olá,  {user.mention_html()}! Pergunte algo, ~Inserir texto de abertura depois",
-        reply_markup=ForceReply(selective=True),
-    )
+    # keyboard = [
+    #     [
+    #         InlineKeyboardButton("Agente", callback_data="Agente"),
+    #         InlineKeyboardButton("Mantenedor", callback_data="Mantenedor"),
+    #     ]
+    # ]
+    # reply_markup = InlineKeyboardMarkup(keyboard)
+    await update.message.reply_text("Olá, como posso ajudar?")
 
+# async def button(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+
+#     """Parses the CallbackQuery and updates the message text."""
+#     query = update.callback_query
+#     await query.answer()
+
+#     await query.edit_message_text(text=f"Opção Selecionada: {query.data}")
+#     if(query.data=="Agente"):
+#         await query.message.reply_text("Permissões de anexo concedidas, caso deseje, anexe um novo documento para a base de dados.")
 
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    """Send a message when the command /help is issued."""
-    await update.message.reply_text("Texto de ajuda ~TODO!")
+    await update.message.reply_text("Pergunte qualquer coisa, para atualizar a base de dados digite /atualizar")
 
 
 async def echo(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -67,21 +73,23 @@ async def echo(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
 
 def main() -> None:
-    """Start the bot."""
-    # Create the Application and pass it your bot's token.
-    application = Application.builder().token("7102297178:AAFSJ17X-zgetmwHVP7pl4rAR5wjivbqw2I").build()
 
-    # on different commands - answer in Telegram
+    application = Application.builder().token(os.getenv("TELEGRAM_BOT_TOKEN")).build()
+
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler("help", help_command))
 
-    # on non command i.e message - echo the message on Telegram
-    # application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, echo))
+    application.add_handler(CommandHandler("atualizar", help_command))
+    application.add_handler(CommandHandler("reprocessar", help_command))
+    
 
+    #Handler do Chat
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND,respostaChat ))
 
+    #Botão
+    # application.add_handler(CallbackQueryHandler(button))
+
     print("Iniciado")
-    # Run the bot until the user presses Ctrl-C
     application.run_polling(allowed_updates=Update.ALL_TYPES)
 
 
