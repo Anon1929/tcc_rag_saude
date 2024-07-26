@@ -18,12 +18,16 @@ import logging
 
 from telegram import ForceReply, Update,InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import Application, CommandHandler, ContextTypes, MessageHandler, filters,CallbackQueryHandler
+
 load_dotenv() 
 
 
 # Abre VectorStore
 vectorStore = Chroma(embedding_function=FastEmbedEmbeddings() ,persist_directory='db')
 chat = RAG.RAG(vectorStore, "llama3:latest")
+
+
+GD.download_googledrive_folder(os.getenv("GD_DIR"),"docs",os.getenv("GD_TOKEN"),False)
 
 
 logging.basicConfig(
