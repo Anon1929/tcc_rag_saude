@@ -6,12 +6,12 @@ from langchain.chains import RetrievalQA
 import sys
 import os
 
-class RAG:
+class RAGmem:
     def __init__(self, vectorStore, model):
         self.vectorStore = vectorStore
         self.llm = Ollama(model=model)
 
-    def invoke(self, query):
+    def invoke(self, query, memoria):
             # Prompt
             template = """
             Você é um assistente virtual treinado para ajudar agentes comunitários de saúde do SUS (Sistema Único de Saúde) a realizarem suas tarefas diárias. 
@@ -32,23 +32,32 @@ class RAG:
             Conversa Natural:
                 Mantenha um tom amigável e profissional, semelhante a uma conversa com um colega.
                 Esteja sempre disposto a ajudar e apoiar o agente comunitário em suas tarefas.
-            Use os pedaços de contexto a seguir para responder a pergunta no final.
+            Use os pedaços de contexto (delimitado por <ctx></ctx>) e o histórico de chat (delimitado por <hs></hs>) a seguir para responder a pergunta no final.
             Responda sempre em português.
+            
+            <ctx>
             {context}
+            </ctx>
+
+            <hs>
+            {history}
+            </hs>
+
             Pergunta: {question}
             Resposta útil:"""
 
             QA_CHAIN_PROMPT = PromptTemplate(
-                input_variables=["context", "question"],
+                input_variables=["history","context", "question"],
                 template=template,
             )
 
             qa_chain = RetrievalQA.from_chain_type(
                 self.llm,
-                retriever = self.vectorStore.as_retriever(),   #Default está usando “similarity” e trazendo 4 documentos
+                retriever = self.vectorStore.as_retriever(),   #Default está usando “similarity” e trazendo 4 documentos #chain type stuff
                 chain_type_kwargs={
                      "verbose": True,
-                     "prompt": QA_CHAIN_PROMPT
+                     "prompt": QA_CHAIN_PROMPT,
+                     "memory": memoria
                      },
                 return_source_documents=True,
             )
