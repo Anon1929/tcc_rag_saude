@@ -7,9 +7,10 @@ import sys
 import os
 
 class RAGmem:
-    def __init__(self, vectorStore, model):
+    def __init__(self, vectorStore, model, verbose=False):
         self.vectorStore = vectorStore
         self.llm = Ollama(model=model)
+        self.verbose = verbose
 
     def invoke(self, query, memoria):
             # Prompt
@@ -55,7 +56,7 @@ class RAGmem:
                 self.llm,
                 retriever = self.vectorStore.as_retriever(),   #Default está usando “similarity” e trazendo 4 documentos #chain type stuff
                 chain_type_kwargs={
-                     "verbose": True,
+                     "verbose": self.verbose,
                      "prompt": QA_CHAIN_PROMPT,
                      "memory": memoria
                      },

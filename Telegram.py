@@ -78,6 +78,11 @@ async def debug(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     print(' user {} - user ID: {} '.format(user['username'], user['id']))
 
 
+async def gerarVectorStore(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    await update.message.reply_text("Atualizando a base de dados")
+    generateVectorStore.generate_vector_store("docs")
+    await update.message.reply_text("Base de dados atualizada")
+
 def main() -> None:
 
     application = Application.builder().token(os.getenv("TELEGRAM_BOT_TOKEN")).build()
@@ -87,6 +92,7 @@ def main() -> None:
     
     application.add_handler(CommandHandler("debug", debug))
 
+    application.add_handler(CommandHandler("vectorStore", gerarVectorStore))
 
     #Handler do Chat 
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND,respostaChat ))
