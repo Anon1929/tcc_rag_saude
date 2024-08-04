@@ -67,10 +67,10 @@ async def respostaChat(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    await update.message.reply_text("Olá, como posso ajudar?")
+    await update.message.reply_text("Olá, pode fazer suas perguntas. Se estiver perdido, digite /help")
 
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    await update.message.reply_text("Pergunte qualquer coisa, para atualizar a base de dados digite /atualizar")
+    await update.message.reply_text("Pergunte qualquer coisa, para atualizar a base de dados digite /vectorStore")
 
 
 async def debug(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
