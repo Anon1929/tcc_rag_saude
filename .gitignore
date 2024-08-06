@@ -5,4 +5,6 @@ lib/
 lib64/
 share/
 db/
+db
+db/*
 .env
