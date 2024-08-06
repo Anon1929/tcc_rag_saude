@@ -12,7 +12,7 @@ import os
 from dotenv import load_dotenv, dotenv_values 
 
 import generateVectorStore
-import RAG
+
 import RAGmem
 import GD
 
@@ -28,10 +28,6 @@ load_dotenv()
 vectorStore = Chroma(embedding_function=FastEmbedEmbeddings() ,persist_directory='db')
 #chat = RAG.RAG(vectorStore, "llama3:latest")
 chat = RAGmem.RAGmem(vectorStore, "llama3:latest")
-
-
-GD.download_googledrive_folder(os.getenv("GD_DIR"),"docs",os.getenv("GD_TOKEN"),False)
-
 
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
@@ -80,7 +76,13 @@ async def debug(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
 async def gerarVectorStore(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text("Atualizando a base de dados")
-    generateVectorStore.generate_vector_store("docs")
+    GD.download_googledrive_folder(os.getenv("GD_DIR"),"docs",os.getenv("GD_TOKEN"),False)
+
+    vectorStore = generateVectorStore.generate_vector_store("docs")
+    
+    global chat
+    chat = RAGmem.RAGmem(vectorStore, "llama3:latest")
+
     await update.message.reply_text("Base de dados atualizada")
 
 def main() -> None:
