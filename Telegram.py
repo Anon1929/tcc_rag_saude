@@ -17,6 +17,7 @@ import RAGmem
 import GD
 
 import logging
+import LoggerWriter
 
 from telegram import ForceReply, Update,InlineKeyboardButton, InlineKeyboardMarkup, Update
 from telegram.ext import Application, CommandHandler, ContextTypes, MessageHandler, filters,CallbackQueryHandler
@@ -30,10 +31,23 @@ vectorStore = Chroma(embedding_function=FastEmbedEmbeddings() ,persist_directory
 chat = RAGmem.RAGmem(vectorStore, "llama3:latest")
 
 logging.basicConfig(
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
+    filename='logs/langchain_verbose.log',  # Nome do arquivo de log
+    level=logging.DEBUG, 
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',  # Formato do log)
 )
+
+logger = logging.getLogger('langchain')
+
+console_handler = logging.StreamHandler()
+console_handler.setLevel(logging.DEBUG)  
+console_handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
+logger.addHandler(console_handler)
+sys.stdout = LoggerWriter.LoggerWriter(logger, logging.DEBUG)
+
 logging.getLogger("httpx").setLevel(logging.WARNING)
-logger = logging.getLogger(__name__)
+logging.getLogger("telegram").setLevel(logging.WARNING)
+logging.getLogger("httpcore").setLevel(logging.WARNING)
+logging.getLogger("urllib3").setLevel(logging.WARNING)
 
 globalDictMemoria = {}
 
@@ -54,11 +68,16 @@ async def respostaChat(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
     #result = chat.invoke(update.message.text)
     result = chat.invoke(update.message.text, memUser)
 
-    logger.info(update.message.text)
+    logger.info("P -" + str(user['id']) + " - " + update.message.text)
     textoResult = result["result"]
     textoResult +=  "\n\nFontes:\n"
+
+    if(len(result["source_documents"]) == 0 ):
+        textoResult += "Não foram encontradas fontes para a informação acima.\nConsulte um profissional da saúde ou busque em fontes confiáveis."
+
     for source in result["source_documents"]:
         textoResult += "página " + str(source.metadata["page"]) + " do arquivo " + source.metadata["source"] +"\n"
+    logger.info( "R - " + str(user['id']) + " - " + textoResult)
     await update.message.reply_text(textoResult)
 
 

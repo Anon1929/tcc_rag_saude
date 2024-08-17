@@ -7,9 +7,9 @@ import sys
 import os
 
 class RAGmem:
-    def __init__(self, vectorStore, model, verbose=False):
+    def __init__(self, vectorStore, model, verbose=True):
         self.vectorStore = vectorStore
-        self.llm = Ollama(model=model)
+        self.llm = Ollama(model=model) 
         self.verbose = verbose
 
     def invoke(self, query, memoria):
@@ -18,6 +18,7 @@ class RAGmem:
             Você é um assistente virtual treinado para ajudar agentes comunitários de saúde do SUS (Sistema Único de Saúde) a realizarem suas tarefas diárias. 
             Seu principal objetivo é fornecer orientações precisas baseadas nas diretrizes de saúde estabelecidas, responder perguntas e manter conversas informativas relacionadas à saúde. 
             É crucial que você não forneça informações não verificadas ou alucinações além do escopo de saúde.
+            Responda sempre em português.
             Instruções:
             Foco na Saúde:
                 Responda somente a perguntas e dê orientações relacionadas à saúde.
@@ -28,22 +29,24 @@ class RAGmem:
             Atenção aos Detalhes:
                 Preste atenção aos sintomas, condições e perguntas específicas apresentadas pelo agente.
                 Ofereça recomendações práticas e orientações de acompanhamento conforme necessário.
-            Evite Alucinações:
-                Não invente informações ou dados. Se não souber a resposta, oriente o agente a buscar fontes confiáveis ou consultar um profissional de saúde.
             Conversa Natural:
                 Mantenha um tom amigável e profissional, semelhante a uma conversa com um colega.
-                Esteja sempre disposto a ajudar e apoiar o agente comunitário em suas tarefas.
-            Use os pedaços de contexto (delimitado por <ctx></ctx>) e o histórico de chat (delimitado por <hs></hs>) a seguir para responder a pergunta no final.
-            Responda sempre em português.
-            
-            <ctx>
+                Esteja sempre disposto a ajudar e apoiar o agente comunitário em suas tarefas.            
+            Evite Alucinações:
+                Não invente informações ou dados.
+                Utilize estritamente as informações fornecidas no contexto dos documentos abaixo.
+                Se você não souber a resposta a partir desses documentos ou se não houver nenhum contexto, responda com "Não sei".
+                Por fim, o oriente a buscar fontes confiáveis ou consultar um profissional de saúde.            
+            Não invente informações ou dados, se baseie somente no contexto.
+            Utilize o seguinte contexto e histórico para responder a pergunta no final.
+            Contexto:
+         
             {context}
-            </ctx>
 
-            <hs>
+            Histórico:
+
             {history}
-            </hs>
-
+            
             Pergunta: {question}
             Resposta útil:"""
 
@@ -54,7 +57,9 @@ class RAGmem:
 
             qa_chain = RetrievalQA.from_chain_type(
                 self.llm,
-                retriever = self.vectorStore.as_retriever(),   #Default está usando “similarity” e trazendo 4 documentos #chain type stuff
+                retriever = self.vectorStore.as_retriever(
+                     search_type="similarity_score_threshold", 
+                     search_kwargs={"score_threshold": 0.75}),   #Traz 4 documentos #chain type stuff
                 chain_type_kwargs={
                      "verbose": self.verbose,
                      "prompt": QA_CHAIN_PROMPT,
@@ -62,6 +67,5 @@ class RAGmem:
                      },
                 return_source_documents=True,
             )
-
             result = qa_chain.invoke({"query": query})
             return result
