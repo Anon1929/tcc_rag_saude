@@ -24,9 +24,18 @@ from telegram.ext import Application, CommandHandler, ContextTypes, MessageHandl
 
 load_dotenv() 
 
-
+vectorStore = {}
 # Abre VectorStore
-vectorStore = Chroma(embedding_function=FastEmbedEmbeddings() ,persist_directory='db')
+S = input("Deseja Gerar o vectorStore?\n")
+if(S == 'S' or S =='s'):
+    GD.download_googledrive_folder(os.getenv("GD_DIR"),"docs",os.getenv("GD_TOKEN"),False)
+    print("Gerando Vector Store")
+    vectorStore = generateVectorStore.generate_vector_store("docs")
+    print("VectorStore Gerado")
+else:
+    vectorStore = Chroma(embedding_function=FastEmbedEmbeddings() ,persist_directory='db')
+
+
 #chat = RAG.RAG(vectorStore, "llama3:latest")
 chat = RAGmem.RAGmem(vectorStore, "llama3:latest")
 
@@ -73,7 +82,7 @@ async def respostaChat(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
     textoResult +=  "\n\nFontes:\n"
 
     if(len(result["source_documents"]) == 0 ):
-        textoResult += "Não foram encontradas fontes para a informação acima.\nConsulte um profissional da saúde ou busque em fontes confiáveis."
+        textoResult = "Não foram encontradas fontes para a informação analisada.\nConsulte um profissional da saúde ou busque em fontes confiáveis.\nCaso possível, entre em contato com a equipe de manutenção para adicionar novas fontes."
 
     for source in result["source_documents"]:
         textoResult += "página " + str(source.metadata["page"]) + " do arquivo " + source.metadata["source"] +"\n"
@@ -82,7 +91,7 @@ async def respostaChat(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    await update.message.reply_text("Olá, pode fazer suas perguntas. Se estiver perdido, digite /help")
+    await update.message.reply_text("Olá, eu sou um assistente virtual treinado para ajudar agentes comunitários de saúde do SUS (Sistema Único de Saúde) a realizarem suas tarefas diárias.\nMeu principal objetivo é fornecer orientações precisas baseadas nas diretrizes de saúde estabelecidas, responder perguntas e manter conversas informativas relacionadas à saúde.\n Pode fazer sua pergunta, em caso de dúvidas digite o comando /help")
 
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text("Pergunte qualquer coisa, para atualizar a base de dados digite /vectorStore")
@@ -109,6 +118,7 @@ def main() -> None:
     application = Application.builder().token(os.getenv("TELEGRAM_BOT_TOKEN")).build()
 
     application.add_handler(CommandHandler("start", start))
+
     application.add_handler(CommandHandler("help", help_command))
     
     application.add_handler(CommandHandler("debug", debug))
