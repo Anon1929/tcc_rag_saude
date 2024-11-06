@@ -45,9 +45,11 @@ class RAG:
 
             qa_chain = RetrievalQA.from_chain_type(
                 self.llm,
-                retriever = self.vectorStore.as_retriever(),   #Default está usando “similarity” e trazendo 4 documentos
+                retriever = self.vectorStore.as_retriever(
+                     search_type="similarity_score_threshold", 
+                     search_kwargs={"score_threshold": 0.7}),   #Traz 4 documentos #chain type stuff
                 chain_type_kwargs={
-                     "verbose": True,
+                     "verbose": False,
                      "prompt": QA_CHAIN_PROMPT
                      },
                 return_source_documents=True,

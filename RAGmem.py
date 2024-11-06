@@ -59,7 +59,7 @@ class RAGmem:
                 self.llm,
                 retriever = self.vectorStore.as_retriever(
                      search_type="similarity_score_threshold", 
-                     search_kwargs={"score_threshold": 0.75}),   #Traz 4 documentos #chain type stuff
+                     search_kwargs={"score_threshold": 0.7}),   #Traz 4 documentos #chain type stuff
                 chain_type_kwargs={
                      "verbose": self.verbose,
                      "prompt": QA_CHAIN_PROMPT,

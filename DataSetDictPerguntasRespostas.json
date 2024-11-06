@@ -1,0 +1,28 @@
+{
+    "user_input": [
+        "Qual é a estratégia mais amplamente utilizada no rastreamento de câncer uterino?",
+        "É correto dizer que o câncer de colo do útero na gravidez é raro?"
+    ],
+    "reference": [
+        "A realização periódica do exame citopatológico continua sendo a estratégia mais amplamente adotada para o rastreamento do câncer do colo do útero",
+        "A incidência do câncer do colo do útero na gestação é rara, ocorrendo de um a 15 casos para 10 mil gestações e não superior aos demais períodos da vida da mulher (evidência moderada)."
+    ],
+    "response": [
+        "Eu não encontre nenhuma menção direta ao rastreamento de câncer uterino nas estratégias apresentadas. No entanto, posso fornecer informações gerais sobre o rastreamento de cânceres femininos.\n\nO rastreamento do câncer uterino envolve a realização de exames e testes para detectar tumores uterinos em seus estágios iniciais, quando são mais tratáveis. Algumas estratégias comprovadas para o rastreamento do câncer uterino incluem:\n\n* Papanicolaou (pap) testes periódicos\n* Testes de detecção de HPV (Human Papillomavirus)\n* Exames ultrassônicos e mamográficos\n\nÉ importante destacar que a escolha da estratégia mais adequada depende do histórico individual e dos sintomas apresentados. Como agente comunitário, é fundamental estar atento às necessidades específicas de cada mulher e orientá-la para buscar ajuda profissional.\n\nSe você tiver alguma dúvida ou precisar de mais informações sobre o rastreamento do câncer uterino, sinta-se à vontade para perguntar!",
+        "Sim, é correto dizer que o câncer de colo do útero durante a gravidez é um caso relativamente raro. Segundo dados da Organização Mundial da Saúde (OMS), a probabilidade de desenvolver câncer de colo do útero durante a gestação é muito baixa, em torno de 1 em 20 mil casos.\n\nNo entanto, é importante ressaltar que a detecção e o tratamento do câncer de colo do útero são fundamentais para evitar complicações e garantir um melhor resultado para a saúde da gestante. Portanto, é essencial realizar exames de Papanicolaou (Pap) ou examinacions citológicas em mulheres com mais de 21 anos de idade, especialmente aquelas com histórico familiar de câncer do colo do útero.\n\nAlém disso, a detecção precoce e o tratamento adequado podem reduzir significativamente a mortalidade relacionada ao câncer de colo do útero. É fundamental que as mulheres tenham acesso a serviços de saúde de qualidade para realizar exames de rastreamento regularmente e receber orientação sobre como prevenir e detectar o câncer de colo do útero."
+    ],
+    "retrieved_contexts": [
+        [
+            "estratégia consolidará as bases necessárias para detecção mais precoce desse tipo de câncer, com vistas a um futuro programa populacional de rastreamento, quando evidências de custo-efetividade e sustentabilidade assim o indicarem. Situações de alto risco devem merecer abordagens individualizadas.",
+            "estratégia consolidará as bases necessárias para detecção mais precoce desse tipo de câncer, com vistas a um futuro programa populacional de rastreamento, quando evidências de custo-efetividade e sustentabilidade assim o indicarem. Situações de alto risco devem merecer abordagens individualizadas.",
+            "•\t O fortalecimento de uma linha programática do câncer relacionado ao trabalho no âmbito da política nacional do câncer, com uma estatura condizente com a magnitude do problema.\n•\t A introdução de novo conceito para controle das concentrações de agentes cancerígenos no ar, em substituição ao chamado limite de tolerância.\n•\t A adoção do princípio da precaução como estratégia e princípio da ação de vigilância.",
+            "•\t O fortalecimento de uma linha programática do câncer relacionado ao trabalho no âmbito da política nacional do câncer, com uma estatura condizente com a magnitude do problema.\n•\t A introdução de novo conceito para controle das concentrações de agentes cancerígenos no ar, em substituição ao chamado limite de tolerância.\n•\t A adoção do princípio da precaução como estratégia e princípio da ação de vigilância."
+        ],
+        [
+            "diminuição da incidência do câncer do colo do útero.",
+            "diminuição da incidência do câncer do colo do útero.",
+            "diminuição da incidência do câncer do colo do útero.",
+            "soras do câncer do colo do útero, bem como definir critérios de produção e qualificação para a certificação de serviços de confirmação diagnóstica"
+        ]
+    ]
+}
