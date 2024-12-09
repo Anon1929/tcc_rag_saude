@@ -23,9 +23,7 @@ f.close()
 ragas_testset = Dataset.from_dict(dataset)
 
 evaluator_llm = LangchainLLMWrapper(Ollama(model="llama3:latest"))
-embedding_model= LangchainEmbeddingsWrapper(FastEmbedEmbeddings())
-
-
+embedding_model= LangchainEmbeddingsWrapper(FastEmbedEmbeddings(model_name='intfloat/multilingual-e5-large'))
 
 result = evaluate(
     dataset = ragas_testset, 

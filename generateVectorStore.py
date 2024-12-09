@@ -3,12 +3,10 @@ from langchain_community.document_loaders import PyPDFLoader
 from langchain_community.vectorstores import Chroma
 from langchain_community.embeddings import FastEmbedEmbeddings
 
-# from langchain.callbacks.manager import CallbackManager
-# from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 import sys
 import os
 
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain.text_splitter import CharacterTextSplitter
 
 class SuppressStdout:
     def __enter__(self):
@@ -28,7 +26,10 @@ def generate_vector_store(folder_path: str):
     files = [f for f in os.listdir(folder_path) if os.path.isfile(os.path.join(folder_path, f))]
 
     # split into chunks
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=0)
+    text_splitter = CharacterTextSplitter(
+        separator="\n\n",
+        chunk_size=500, 
+        chunk_overlap=50)
 
     documents = []
 
@@ -37,18 +38,25 @@ def generate_vector_store(folder_path: str):
         loader = PyPDFLoader(path)
         documents += loader.load_and_split(text_splitter)
         print("Arquivo "+path+" Carregado")
+    
+    collection_metadata={
+        "hnsw:space": "ip"
+    }
 
     # create the vector store
+    embed_model = FastEmbedEmbeddings(model_name='intfloat/multilingual-e5-large')
+
     print("Gerando Vector Store ...")
-    with SuppressStdout():
-        vectorstore = Chroma.from_documents(documents=documents, embedding=FastEmbedEmbeddings(),persist_directory='db')
-
+    vectorstore = Chroma.from_documents(documents=documents,
+        embedding=embed_model,
+        persist_directory='db2',
+        collection_metadata = collection_metadata
+        )
     return vectorstore
-
 
 if __name__ == "__main__":
     # print("Enter the path to the folder containing the PDF files:")
     # folder_path = input()
-    folder_path = "docs"
+    folder_path = "selectedDocs"
     generate_vector_store(folder_path)
-    print("Vector store generated successfully.")
+    print("Vector store gerado.")
