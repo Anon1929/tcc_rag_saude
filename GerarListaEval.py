@@ -15,9 +15,10 @@ from ragas.metrics import (
 )
 from datetime import datetime
 import pandas as pd
+import traceback
 
 def log(text):
-    timeStr = datetime.now().strftime("%H:%M:%S")
+    timeStr = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
     finalString = timeStr + " - " + text + "\n"
     
     with open("experimentos/evals/logs.txt", "a") as f:
@@ -53,21 +54,26 @@ def avaliar(inputFile, outputFile, llm, embedding_model):
     df.to_csv(outputFile, sep='|')
     log(f"resultado salvo no arquivo: {outputFile}")
     
-if __name__ == "__main__":    
+if __name__ == "__main__":
     log("Iniciando execucao")
     evaluator_llm = LangchainLLMWrapper(Ollama(model="llama3:latest"))
     embedding_model= LangchainEmbeddingsWrapper(FastEmbedEmbeddings(model_name='intfloat/multilingual-e5-large'))
 
-    for i in range(1, 31):
-        inputFile = f"experimentos/respostas/respostas_{i}.json"
-        outputFile = f"experimentos/evals/eval_{i}.csv"
-        
-        log(f"experimento {i}")
-        log(f"inputFile: {inputFile}")
-        log(f"outputFile: {outputFile}")
+    try:
+        for i in range(14, 31):
+            inputFile = f"experimentos/respostas/respostas_{i}.json"
+            outputFile = f"experimentos/evals/eval_{i}.csv"
+            
+            log(f"experimento {i}")
+            log(f"inputFile: {inputFile}")
+            log(f"outputFile: {outputFile}")
 
-        avaliar(inputFile, outputFile, evaluator_llm, embedding_model)
-        
+            avaliar(inputFile, outputFile, evaluator_llm, embedding_model)
+    except Exception as e:
+        error_details = traceback.format_exc()
+        log(f"[ERROR] {error_details}")
+        exit()
+            
     
 
     
