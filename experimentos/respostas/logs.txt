@@ -1,0 +1,241 @@
+11:42:13 - iniciando execucao
+11:42:13 - experimento n1
+11:42:13 - similarity_metric: ip
+11:42:13 - outputFile: experimentos/respostas/respostas_1.json
+11:42:13 - persist_directory: experimentos/dbs/db_1
+11:42:19 - iniciando geração de respostas
+11:57:59 - respostas geradas
+11:57:59 - 4 dicionarios gerados
+11:57:59 - Resultado escrito no arquivo experimentos/respostas/respostas_1.json
+11:57:59 - experimento n2
+11:57:59 - similarity_metric: l2
+11:57:59 - outputFile: experimentos/respostas/respostas_2.json
+11:57:59 - persist_directory: experimentos/dbs/db_2
+11:58:04 - iniciando geração de respostas
+12:13:57 - respostas geradas
+12:13:57 - 4 dicionarios gerados
+12:13:57 - Resultado escrito no arquivo experimentos/respostas/respostas_2.json
+12:13:57 - experimento n3
+12:13:57 - similarity_metric: cosine
+12:13:57 - outputFile: experimentos/respostas/respostas_3.json
+12:13:57 - persist_directory: experimentos/dbs/db_3
+12:14:02 - iniciando geração de respostas
+12:30:10 - respostas geradas
+12:30:10 - 4 dicionarios gerados
+12:30:10 - Resultado escrito no arquivo experimentos/respostas/respostas_3.json
+12:30:10 - experimento n4
+12:30:10 - similarity_metric: ip
+12:30:10 - outputFile: experimentos/respostas/respostas_4.json
+12:30:10 - persist_directory: experimentos/dbs/db_4
+12:30:15 - iniciando geração de respostas
+12:46:11 - respostas geradas
+12:46:11 - 4 dicionarios gerados
+12:46:11 - Resultado escrito no arquivo experimentos/respostas/respostas_4.json
+12:46:11 - experimento n5
+12:46:11 - similarity_metric: l2
+12:46:11 - outputFile: experimentos/respostas/respostas_5.json
+12:46:11 - persist_directory: experimentos/dbs/db_5
+12:46:16 - iniciando geração de respostas
+13:02:26 - respostas geradas
+13:02:26 - 4 dicionarios gerados
+13:02:26 - Resultado escrito no arquivo experimentos/respostas/respostas_5.json
+13:02:26 - experimento n6
+13:02:26 - similarity_metric: cosine
+13:02:26 - outputFile: experimentos/respostas/respostas_6.json
+13:02:26 - persist_directory: experimentos/dbs/db_6
+13:02:30 - iniciando geração de respostas
+13:18:03 - respostas geradas
+13:18:03 - 4 dicionarios gerados
+13:18:03 - Resultado escrito no arquivo experimentos/respostas/respostas_6.json
+13:18:03 - experimento n7
+13:18:03 - similarity_metric: ip
+13:18:03 - outputFile: experimentos/respostas/respostas_7.json
+13:18:03 - persist_directory: experimentos/dbs/db_7
+13:18:07 - iniciando geração de respostas
+13:34:03 - respostas geradas
+13:34:03 - 4 dicionarios gerados
+13:34:03 - Resultado escrito no arquivo experimentos/respostas/respostas_7.json
+13:34:03 - experimento n8
+13:34:03 - similarity_metric: l2
+13:34:03 - outputFile: experimentos/respostas/respostas_8.json
+13:34:03 - persist_directory: experimentos/dbs/db_8
+13:34:08 - iniciando geração de respostas
+13:49:56 - respostas geradas
+13:49:56 - 4 dicionarios gerados
+13:49:56 - Resultado escrito no arquivo experimentos/respostas/respostas_8.json
+13:49:56 - experimento n9
+13:49:56 - similarity_metric: cosine
+13:49:56 - outputFile: experimentos/respostas/respostas_9.json
+13:49:56 - persist_directory: experimentos/dbs/db_9
+13:50:01 - iniciando geração de respostas
+14:06:02 - respostas geradas
+14:06:02 - 4 dicionarios gerados
+14:06:02 - Resultado escrito no arquivo experimentos/respostas/respostas_9.json
+14:06:02 - experimento n10
+14:06:02 - similarity_metric: ip
+14:06:02 - outputFile: experimentos/respostas/respostas_10.json
+14:06:02 - persist_directory: experimentos/dbs/db_10
+14:06:07 - iniciando geração de respostas
+14:22:27 - respostas geradas
+14:22:27 - 4 dicionarios gerados
+14:22:27 - Resultado escrito no arquivo experimentos/respostas/respostas_10.json
+14:22:27 - experimento n11
+14:22:27 - similarity_metric: l2
+14:22:27 - outputFile: experimentos/respostas/respostas_11.json
+14:22:27 - persist_directory: experimentos/dbs/db_11
+14:22:31 - iniciando geração de respostas
+14:38:57 - respostas geradas
+14:38:57 - 4 dicionarios gerados
+14:38:57 - Resultado escrito no arquivo experimentos/respostas/respostas_11.json
+14:38:57 - experimento n12
+14:38:57 - similarity_metric: cosine
+14:38:57 - outputFile: experimentos/respostas/respostas_12.json
+14:38:57 - persist_directory: experimentos/dbs/db_12
+14:39:02 - iniciando geração de respostas
+14:55:14 - respostas geradas
+14:55:14 - 4 dicionarios gerados
+14:55:14 - Resultado escrito no arquivo experimentos/respostas/respostas_12.json
+14:55:14 - experimento n13
+14:55:14 - similarity_metric: ip
+14:55:14 - outputFile: experimentos/respostas/respostas_13.json
+14:55:14 - persist_directory: experimentos/dbs/db_13
+14:55:19 - iniciando geração de respostas
+15:14:37 - respostas geradas
+15:14:37 - 4 dicionarios gerados
+15:14:37 - Resultado escrito no arquivo experimentos/respostas/respostas_13.json
+15:14:37 - experimento n14
+15:14:37 - similarity_metric: l2
+15:14:37 - outputFile: experimentos/respostas/respostas_14.json
+15:14:37 - persist_directory: experimentos/dbs/db_14
+15:14:41 - iniciando geração de respostas
+15:34:11 - respostas geradas
+15:34:11 - 4 dicionarios gerados
+15:34:11 - Resultado escrito no arquivo experimentos/respostas/respostas_14.json
+15:34:11 - experimento n15
+15:34:11 - similarity_metric: cosine
+15:34:11 - outputFile: experimentos/respostas/respostas_15.json
+15:34:11 - persist_directory: experimentos/dbs/db_15
+15:34:16 - iniciando geração de respostas
+15:53:46 - respostas geradas
+15:53:46 - 4 dicionarios gerados
+15:53:46 - Resultado escrito no arquivo experimentos/respostas/respostas_15.json
+15:53:46 - experimento n16
+15:53:46 - similarity_metric: ip
+15:53:46 - outputFile: experimentos/respostas/respostas_16.json
+15:53:46 - persist_directory: experimentos/dbs/db_16
+15:53:51 - iniciando geração de respostas
+16:13:04 - respostas geradas
+16:13:04 - 4 dicionarios gerados
+16:13:04 - Resultado escrito no arquivo experimentos/respostas/respostas_16.json
+16:13:04 - experimento n17
+16:13:04 - similarity_metric: l2
+16:13:04 - outputFile: experimentos/respostas/respostas_17.json
+16:13:04 - persist_directory: experimentos/dbs/db_17
+16:13:09 - iniciando geração de respostas
+16:32:29 - respostas geradas
+16:32:29 - 4 dicionarios gerados
+16:32:29 - Resultado escrito no arquivo experimentos/respostas/respostas_17.json
+16:32:29 - experimento n18
+16:32:29 - similarity_metric: cosine
+16:32:29 - outputFile: experimentos/respostas/respostas_18.json
+16:32:29 - persist_directory: experimentos/dbs/db_18
+16:32:34 - iniciando geração de respostas
+16:51:46 - respostas geradas
+16:51:46 - 4 dicionarios gerados
+16:51:46 - Resultado escrito no arquivo experimentos/respostas/respostas_18.json
+16:51:46 - experimento n19
+16:51:46 - similarity_metric: ip
+16:51:46 - outputFile: experimentos/respostas/respostas_19.json
+16:51:46 - persist_directory: experimentos/dbs/db_19
+16:51:51 - iniciando geração de respostas
+17:07:26 - respostas geradas
+17:07:26 - 4 dicionarios gerados
+17:07:26 - Resultado escrito no arquivo experimentos/respostas/respostas_19.json
+17:07:26 - experimento n20
+17:07:26 - similarity_metric: l2
+17:07:26 - outputFile: experimentos/respostas/respostas_20.json
+17:07:26 - persist_directory: experimentos/dbs/db_20
+17:07:31 - iniciando geração de respostas
+17:23:35 - respostas geradas
+17:23:35 - 4 dicionarios gerados
+17:23:35 - Resultado escrito no arquivo experimentos/respostas/respostas_20.json
+17:23:35 - experimento n21
+17:23:35 - similarity_metric: cosine
+17:23:35 - outputFile: experimentos/respostas/respostas_21.json
+17:23:35 - persist_directory: experimentos/dbs/db_21
+17:23:40 - iniciando geração de respostas
+17:39:55 - respostas geradas
+17:39:55 - 4 dicionarios gerados
+17:39:55 - Resultado escrito no arquivo experimentos/respostas/respostas_21.json
+17:39:55 - experimento n22
+17:39:55 - similarity_metric: ip
+17:39:55 - outputFile: experimentos/respostas/respostas_22.json
+17:39:55 - persist_directory: experimentos/dbs/db_22
+17:39:59 - iniciando geração de respostas
+17:56:23 - respostas geradas
+17:56:23 - 4 dicionarios gerados
+17:56:23 - Resultado escrito no arquivo experimentos/respostas/respostas_22.json
+17:56:23 - experimento n23
+17:56:23 - similarity_metric: l2
+17:56:23 - outputFile: experimentos/respostas/respostas_23.json
+17:56:23 - persist_directory: experimentos/dbs/db_23
+17:56:28 - iniciando geração de respostas
+18:12:27 - respostas geradas
+18:12:27 - 4 dicionarios gerados
+18:12:27 - Resultado escrito no arquivo experimentos/respostas/respostas_23.json
+18:12:27 - experimento n24
+18:12:27 - similarity_metric: cosine
+18:12:27 - outputFile: experimentos/respostas/respostas_24.json
+18:12:27 - persist_directory: experimentos/dbs/db_24
+18:12:32 - iniciando geração de respostas
+18:28:27 - respostas geradas
+18:28:27 - 4 dicionarios gerados
+18:28:27 - Resultado escrito no arquivo experimentos/respostas/respostas_24.json
+18:28:27 - experimento n25
+18:28:27 - similarity_metric: ip
+18:28:27 - outputFile: experimentos/respostas/respostas_25.json
+18:28:27 - persist_directory: experimentos/dbs/db_25
+18:28:33 - iniciando geração de respostas
+18:43:56 - respostas geradas
+18:43:56 - 4 dicionarios gerados
+18:43:56 - Resultado escrito no arquivo experimentos/respostas/respostas_25.json
+18:43:56 - experimento n26
+18:43:56 - similarity_metric: l2
+18:43:56 - outputFile: experimentos/respostas/respostas_26.json
+18:43:56 - persist_directory: experimentos/dbs/db_26
+18:44:01 - iniciando geração de respostas
+18:59:07 - respostas geradas
+18:59:07 - 4 dicionarios gerados
+18:59:07 - Resultado escrito no arquivo experimentos/respostas/respostas_26.json
+18:59:07 - experimento n27
+18:59:07 - similarity_metric: cosine
+18:59:07 - outputFile: experimentos/respostas/respostas_27.json
+18:59:07 - persist_directory: experimentos/dbs/db_27
+18:59:11 - iniciando geração de respostas
+19:14:47 - respostas geradas
+19:14:47 - 4 dicionarios gerados
+19:14:47 - Resultado escrito no arquivo experimentos/respostas/respostas_27.json
+19:14:47 - experimento n28
+19:14:47 - similarity_metric: ip
+19:14:47 - outputFile: experimentos/respostas/respostas_28.json
+19:14:47 - persist_directory: experimentos/dbs/db_28
+19:14:51 - iniciando geração de respostas
+19:30:06 - respostas geradas
+19:30:06 - 4 dicionarios gerados
+19:30:06 - Resultado escrito no arquivo experimentos/respostas/respostas_28.json
+19:30:06 - experimento n29
+19:30:06 - similarity_metric: l2
+19:30:06 - outputFile: experimentos/respostas/respostas_29.json
+19:30:06 - persist_directory: experimentos/dbs/db_29
+19:30:10 - iniciando geração de respostas
+19:45:21 - respostas geradas
+19:45:21 - 4 dicionarios gerados
+19:45:21 - Resultado escrito no arquivo experimentos/respostas/respostas_29.json
+19:45:21 - experimento n30
+19:45:21 - similarity_metric: cosine
+19:45:21 - outputFile: experimentos/respostas/respostas_30.json
+19:45:21 - persist_directory: experimentos/dbs/db_30
+19:45:25 - iniciando geração de respostas
+20:00:20 - respostas geradas
+20:00:20 - 4 dicionarios gerados
+20:00:20 - Resultado escrito no arquivo experimentos/respostas/respostas_30.json
